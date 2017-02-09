@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" http-equiv="Content-Type">
+	<title>canvas</title>
+	<script type="text/javascript">
+		function drawTop(ctx,fillStyle){
+			ctx.fillStyle=fillStyle;
+			ctx.beginPath();
+			ctx.arc(0,0,30,0,Math.PI,true);
+			ctx.closePath();
+			ctx.fill();
+		}
+		function drawCtrip(ctx){
+			ctx.save();
+			ctx.fillStyle='blue';
+			ctx.fillRect(-1.5,0,1.5,40);
+			ctx.beginPath();
+			ctx.strokeStyle='blue';
+			ctx.arc(-5,40,4,Math.PI,Math.PI*2,true);
+			ctx.stroke();
+			ctx.closePath();
+			ctx.restore();
+		}
+		function draw(){
+			var ctx=document.getElementById('myCancas').getContext('2d');
+			ctx.translate(80,80);
+			for(var i=1;i<10;i++){
+				ctx.save();//作用：始终以（80，80）为坐标原点移动。
+				ctx.translate(60*i,0);				
+				drawTop(ctx,"rgb("+(30*i)+","+(255-30*i)+",255)");				
+				drawCtrip(ctx);
+				ctx.restore();
+			}
+		}
+		window.onload=function(){
+			draw();
+		}
+	</script>
+</head>
+<body>
+<canvas id="myCancas" width="700" height="300"></canvas>
+</body>
+</html>
