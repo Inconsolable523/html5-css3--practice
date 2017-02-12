@@ -24,14 +24,25 @@
 		}
 		function draw(){
 			var ctx=document.getElementById('myCancas').getContext('2d');
-			ctx.translate(80,80);
-			for(var i=1;i<10;i++){
-				ctx.save();//作用：始终以（80，80）为坐标原点移动。
-				ctx.translate(60*i,0);				
-				drawTop(ctx,"rgb("+(30*i)+","+(255-30*i)+",255)");				
+			// 移动
+			// ctx.translate(80,80);
+			// for(var i=1;i<10;i++){
+			// 	ctx.save();//作用：始终以（80，80）为坐标原点移动。
+			// 	ctx.translate(60*i,0);				
+			// 	drawTop(ctx,"rgb("+(30*i)+","+(255-30*i)+",255)");				
+			// 	drawCtrip(ctx);
+			// 	ctx.restore();
+			// }
+
+			// 旋转
+			ctx.translate(150,150);
+			for(var i=1;i<9;i++){
+				ctx.save();
+				ctx.rotate(Math.PI*(1/2+i/4));//旋转
+				ctx.translate(0,-100);
+				drawTop(ctx,"rgb("+(30*i)+","+(255-30*i)+",255)");		
 				drawCtrip(ctx);
-				ctx.restore();
-			}
+				ctx.restore();	}
 		}
 		window.onload=function(){
 			draw();
