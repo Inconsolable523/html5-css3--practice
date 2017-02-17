@@ -1,0 +1,45 @@
+<!-- 设计网页皮肤 -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>网页皮肤</title>
+</head>
+<body >
+
+<script type="text/javascript">
+	if(typeof localStorage ==='undefined'){
+		window.alert('该浏览器不支持localStorage');
+	}else{
+		window.alert('您的浏览器支持localStorage');
+	}
+	colorLoad();
+	// 设置div背景为红色，并保存在localStorage中
+	function redSet(){
+		document.getElementById('divblock').style.backgroundColor='red';
+		window.localStorage.setItem('backgroundColor','red');
+	}
+	// 设置div背景为绿色，并保存在localStorage中
+	function greenSet(){
+		document.getElementById('divblock').style.backgroundColor='green';
+		window.localStorage.setItem('backgroundColor','green');
+	}
+	// 设置div背景为蓝色，并保存在localStorage中
+	function blueSet(){
+		document.getElementById('divblock').style.backgroundColor='blue';
+		window.localStorage.setItem('backgroundColor','blue');
+	}
+	function colorLoad(){
+		document.getElementById('divblock').style.backgroundColor=window.localStorage.getItem('backgroundColor');
+	}
+
+
+</script>
+<section id="J-main">
+	<button id="redbutton" onclick="redSet()">红色</button>
+	<button id="greenbutton" onclick="greenSet()">绿色</button>
+	<button id="bluebutton" onclick="blueSet()">蓝色</button>
+</section>
+<div id="divblock" style="width: 500px;height: 500px;"></div>
+</body>
+</html>
